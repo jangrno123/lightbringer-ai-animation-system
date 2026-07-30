@@ -1,5 +1,10 @@
 # Maintainer launch configuration
 
+## Public authorship
+
+- **Proposer and system architect:** AI Creator BAO
+- **Developer and operator:** STUDIO GENESIS
+
 ## Repository
 
 - **Owner:** `jangrno123`

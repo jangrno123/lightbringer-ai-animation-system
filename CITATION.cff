@@ -3,7 +3,8 @@ message: "If you reference the LIGHTBRINGER AI animation workflow, please cite t
 title: "LIGHTBRINGER: A Human-Gated Production Operating System for AI Animation"
 type: software
 authors:
-  - name: "STUDIO GENESIS"
+  - name: "AI Creator BAO"
+    affiliation: "STUDIO GENESIS"
 repository-code: "https://github.com/jangrno123/lightbringer-ai-animation-system"
 url: "https://www.studiogenesis.co.kr"
 license: MIT

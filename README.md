@@ -6,11 +6,13 @@
 
 [한국어 소개](docs/README.ko.md) · [Workflow](docs/WORKFLOW.md) · [Architecture](docs/ARCHITECTURE.md) · [Industry impact](docs/INDUSTRY_IMPACT.md) · [Adoption guide](docs/ADOPTION_GUIDE.md)
 
+**Proposed and architected by AI Creator BAO · Developed and operated by STUDIO GENESIS**
+
 > LIGHTBRINGER is not another image or video model. It is the production control layer that turns approved screenplays into traceable, asset-consistent, cost-controlled animation work.
 
 AI animation teams can generate individual shots quickly. Producing an entire episode is harder: story decisions drift, characters lose identity, prompts diverge, long scripts become impossible to navigate, and expensive video renders are repeated without a reliable approval trail.
 
-LIGHTBRINGER was built by **STUDIO GENESIS** to solve that operational gap.
+LIGHTBRINGER was proposed and system-architected by **AI Creator BAO**, then developed by **STUDIO GENESIS** to solve that operational gap.
 
 ## The production problem
 
@@ -159,7 +161,7 @@ We welcome workflow critique, production case studies, metric proposals, and int
 
 ## About STUDIO GENESIS
 
-STUDIO GENESIS develops AI-assisted animation production systems and workflows. LIGHTBRINGER is our approach to connecting human creative decisions with reproducible production data.
+**AI Creator BAO** is the proposer and system architect of LIGHTBRINGER. **STUDIO GENESIS** develops and operates the AI-assisted animation production system, connecting human creative decisions with reproducible production data.
 
 Website: [studiogenesis.co.kr](https://www.studiogenesis.co.kr)
 
