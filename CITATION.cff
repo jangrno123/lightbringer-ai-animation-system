@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you reference the LIGHTBRINGER AI animation workflow, please cite this repository."
+title: "LIGHTBRINGER: A Human-Gated Production Operating System for AI Animation"
+type: software
+authors:
+  - name: "STUDIO GENESIS"
+repository-code: "https://github.com/jangrno123/lightbringer-ai-animation-system"
+url: "https://www.studiogenesis.co.kr"
+license: MIT
+keywords:
+  - ai-animation
+  - animation-pipeline
+  - generative-video
+  - storyboard
+  - previz
+  - human-in-the-loop
+  - production-workflow

@@ -1,0 +1,69 @@
+name: Workflow feedback
+description: Share a production bottleneck or propose a measurable workflow improvement.
+title: "[Workflow] "
+labels:
+  - workflow
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please do not upload confidential media, unreleased scripts, credentials, or personal data.
+  - type: dropdown
+    id: role
+    attributes:
+      label: Production role
+      options:
+        - Writer / adaptation
+        - Director / storyboard
+        - Art / continuity
+        - AI animation artist
+        - Producer
+        - Technical director / engineer
+        - Researcher
+        - Model or tool provider
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Workflow stage
+      options:
+        - Screenplay and review
+        - Segment analysis
+        - Shot design and timing
+        - Continuity and assets
+        - Prompt compilation
+        - Storyboard or previz
+        - Render approval
+        - Render and review
+        - Version and recovery
+        - Cross-stage
+    validations:
+      required: true
+  - type: textarea
+    id: bottleneck
+    attributes:
+      label: Current bottleneck
+      description: What happens, how often, and who is affected?
+    validations:
+      required: true
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Current workaround
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: textarea
+    id: measurement
+    attributes:
+      label: Measurable success condition
+      description: How would a team know that this change worked?
+    validations:
+      required: true
