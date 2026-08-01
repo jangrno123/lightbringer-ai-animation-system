@@ -1,0 +1,21 @@
+{
+  "common_prompt_ko": "2D 셀 애니메이션, 한국형 다크 사이언스 판타지, 냉청색 항성광, 정돈된 실루엣, 일관된 캐릭터 시트",
+  "common_prompt_en": "2D cel animation, Korean dark science-fantasy, cold blue starlight, clean silhouettes, consistent character sheets",
+  "common_negative_ko": "왜곡된 신체, 중복 인물, 추가 팔다리, 불필요한 문자, 자막, 비율 붕괴, 에셋 불일치",
+  "common_negative_en": "distorted anatomy, duplicate characters, extra limbs, unwanted text, subtitles, broken aspect ratio, asset identity drift",
+  "shot": {
+    "shot_code": "DEMO-SH002",
+    "layers": {
+      "identity": "@ARIA_PILOT",
+      "composition": "Medium close-up, three-quarter profile",
+      "blocking": "Right hand remains on the cracked console; eyeline stays on the jump gate",
+      "action": "One controlled breath, then one uninterrupted dialogue line",
+      "look": "Cold blue rim light with dim red console bounce",
+      "audio": "Korean dialogue, quiet breath, console error tone",
+      "negative": "No lip-sync mismatch, no subtitle, no extra hand"
+    },
+    "korean_master": "@ARIA_PILOT의 미디엄 클로즈업. 오른손은 콘솔에 고정하고 도약창을 보며 ‘도약창이 닫히기까지 사십이 초. 이번에 놓치면 돌아갈 길이 없어.’라고 낮게 말한다.",
+    "english_video_master": "Medium close-up of @ARIA_PILOT, right hand locked on the cracked console, eyes fixed on the jump gate. She quietly says in Korean: ‘도약창이 닫히기까지 사십이 초. 이번에 놓치면 돌아갈 길이 없어.’ Subtle handheld vibration, red console error light under her face.",
+    "english_storyboard_master": "Medium close-up storyboard of @ARIA_PILOT at the cracked console, tense eyes toward the jump gate, cold blue rim light and subtle red error glow."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "project": "ORBITAL ECHO",
+  "scene_id": "DEMO-SC001",
+  "scene_title": "무음 궤도의 신호",
+  "duration_seconds": 42,
+  "segments": {
+    "total": 2,
+    "timing_ready": 2,
+    "continuity_ready": 2,
+    "prompt_ready": 2,
+    "completed": 2,
+    "failed": 0
+  },
+  "shots": 6,
+  "asset_identities": 5,
+  "storyboard_attempts_shown": 3,
+  "workflow": [
+    "approved_screenplay",
+    "segment_analysis",
+    "shot_design_and_timing",
+    "continuity_and_asset_lock",
+    "prompt_master",
+    "render_cost_gate",
+    "result_history"
+  ]
+}

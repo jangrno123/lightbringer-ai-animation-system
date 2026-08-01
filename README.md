@@ -4,7 +4,7 @@
 
 ![LIGHTBRINGER — AI Animation Production System](assets/lightbringer-social-preview.png)
 
-[한국어 소개](docs/README.ko.md) · [Workflow](docs/WORKFLOW.md) · [Architecture](docs/ARCHITECTURE.md) · [Industry impact](docs/INDUSTRY_IMPACT.md) · [Adoption guide](docs/ADOPTION_GUIDE.md)
+[Working demo](docs/DEMO_CASE_STUDY.md) · [한국어 소개](docs/README.ko.md) · [Workflow](docs/WORKFLOW.md) · [Architecture](docs/ARCHITECTURE.md) · [Industry impact](docs/INDUSTRY_IMPACT.md) · [Adoption guide](docs/ADOPTION_GUIDE.md)
 
 **Proposed and architected by AI Creator BAO · Developed and operated by STUDIO GENESIS**
 
@@ -13,6 +13,31 @@
 AI animation teams can generate individual shots quickly. Producing an entire episode is harder: story decisions drift, characters lose identity, prompts diverge, long scripts become impossible to navigate, and expensive video renders are repeated without a reliable approval trail.
 
 LIGHTBRINGER was proposed and system-architected by **AI Creator BAO**, then developed by **STUDIO GENESIS** to solve that operational gap.
+
+## See the working product
+
+This repository now includes a captured end-to-end run from the working LIGHTBRINGER application. The isolated demo project **ORBITAL ECHO** uses an original 42-second Korean screenplay, two stable segments, six production shots, five synchronized asset identities, Korean and English prompt masters, a render cost gate, and completed storyboard history.
+
+![LIGHTBRINGER segment explorer and shot timing](assets/demo/02-shot-design.png)
+
+| Screenplay | Segments | Shots | Asset identities | Completed storyboard attempts | Failed stages |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 42 sec | 2 | 6 | 5 | 3 | 0 |
+
+<table>
+  <tr>
+    <td width="50%"><img src="assets/demo/03-continuity-assets.png" alt="Shot-level continuity and asset synchronization"></td>
+    <td width="50%"><img src="assets/demo/06-render-results.png" alt="Completed storyboard attempts and render history"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Continuity + asset synchronization</b></td>
+    <td align="center"><b>Storyboard result history</b></td>
+  </tr>
+</table>
+
+[Open the illustrated case study](docs/DEMO_CASE_STUDY.md) · [Read the screenplay input](examples/orbital-echo/input-screenplay.ko.txt) · [Inspect a shot record](examples/orbital-echo/shot-output.sample.json) · [Inspect the prompt master](examples/orbital-echo/prompt-master.sample.json)
+
+The demo uses the real application UI, API contracts, data schemas, progression rules, asset bindings, prompt surfaces, and render-history components. Its isolated output is deterministic so the walkthrough can be reproduced without revealing client work or spending external model credits.
 
 ## The production problem
 
@@ -133,6 +158,9 @@ LIGHTBRINGER is a working internal production system under active development at
 
 This public repository shares:
 
+- an illustrated working-product case study;
+- sanitized screenplay, shot, prompt, and run-summary examples;
+- actual application screenshots from an isolated demo project;
 - the production philosophy;
 - the workflow and data boundaries;
 - the system architecture;
