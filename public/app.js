@@ -202,12 +202,9 @@ function renderContinuity() {
   const assets = [...new Set(state.analysis.shots.flatMap((shot) => shot.assets))];
   const library = $("#assetLibrary");
   library.replaceChildren();
-  const imageByAsset = { "@ARIA_PILOT": "/assets/demo/asset-aria.jpg", "@NOX_ENGINEER": "/assets/demo/asset-nox.jpg", "@LB_OBSERVATION": "/assets/demo/shot-001.jpg" };
   assets.forEach((asset) => {
     const item = el("div", "asset-item");
-    const img = el("img", "asset-thumb");
-    img.src = imageByAsset[asset] || "/assets/demo/shot-002.jpg";
-    img.alt = "";
+    const img = el("div", "asset-thumb", asset.replace("@", "").split("_").map((part) => part[0]).join("").slice(0, 3));
     const label = el("div");
     label.append(el("b", "", asset), el("span", "", copy[state.language].assetLabels[asset] || asset));
     item.append(img, label);

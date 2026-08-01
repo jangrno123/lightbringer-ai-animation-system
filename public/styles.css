@@ -59,3 +59,10 @@ dialog { width: min(580px, calc(100vw - 30px)); padding: 0; color: var(--text); 
 @media (max-width: 680px) {
   .topbar { height: 62px; padding: 0 14px; }.brand small, .engine-badge span, .ghost-button { display: none; }.engine-badge { width: 34px; padding: 0; justify-content: center; }.shell { min-height: calc(100vh - 62px); }.rail { overflow-x: auto; }.workflow-nav { min-width: 520px; }.workspace-head { align-items: flex-start; }.progress-block { display: none; }.production-grid { grid-template-columns: 1fr; }.explorer-card { min-height: auto; }.shot-card { min-height: 480px; }.shot-editor { grid-template-columns: 1fr; }.field.wide { grid-column: auto; }.continuity-row { grid-template-columns: 65px 1fr; }.continuity-row .asset-pills { grid-column: 1 / -1; }.stage-footer { align-items: stretch; flex-direction: column; }.next-button { width: 100%; }.screenplay-card textarea { height: 410px; }
 }
+
+/* Self-hosted demo uses CSS-native previews so deployment does not depend on private media. */
+.asset-thumb { display: grid; place-items: center; color: var(--blue); background: linear-gradient(135deg, #102d3e, #0b1c2a); font-size: 10px; font-weight: 900; }
+.preview-image { padding: 18px; background: radial-gradient(circle at 65% 35%, rgba(55, 190, 255, .22), transparent 27%), #02070b; }
+.storyboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; height: 100%; }
+.storyboard-grid i { border: 1px solid rgba(111, 208, 242, .2); border-radius: 5px; background: linear-gradient(145deg, rgba(30, 105, 139, .36), rgba(4, 18, 28, .7)); }
+.storyboard-grid i:nth-child(2), .storyboard-grid i:nth-child(5) { background: radial-gradient(circle at 60% 42%, rgba(104, 225, 255, .42), transparent 12%), linear-gradient(145deg, rgba(30, 105, 139, .36), rgba(4, 18, 28, .7)); }
