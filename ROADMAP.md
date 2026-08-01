@@ -6,9 +6,11 @@
 - [x] Define the human-gated workflow
 - [x] Document the reference architecture
 - [x] Publish an outcome measurement framework
-- [ ] Add anonymized product screenshots
-- [ ] Publish a sample neutral screenplay-to-shot dataset
-- [ ] Publish a vendor-neutral prompt canon example
+- [x] Add anonymized product screenshots
+- [x] Publish a sample neutral screenplay-to-shot dataset
+- [x] Publish a vendor-neutral prompt canon example
+- [x] Publish bilingual Korean and English demo navigation
+- [x] Add automated public-boundary and documentation validation
 - [ ] Publish a cost-per-approved-second evaluation template
 
 ## Production system
