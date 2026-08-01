@@ -6,7 +6,7 @@
 
 [English](README.md) · [한국어](docs/README.ko.md)
 
-[**Run the public demo →**](#run-the-public-demo) · [60-second tour](docs/QUICK_TOUR.md) · [Working case study](docs/DEMO_CASE_STUDY.md) · [Workflow](docs/WORKFLOW.md) · [Discuss](https://github.com/jangrno123/lightbringer-ai-animation-system/discussions)
+[**Open the live demo →**](https://lightbringer-ai-animation-demo.jangrno123.chatgpt.site) · [60-second tour](docs/QUICK_TOUR.md) · [Working case study](docs/DEMO_CASE_STUDY.md) · [Workflow](docs/WORKFLOW.md) · [Discuss](https://github.com/jangrno123/lightbringer-ai-animation-system/discussions)
 
 **Proposed and system-architected by AI Creator BAO · Developed and operated by STUDIO GENESIS**
 
@@ -27,6 +27,8 @@ Start with the [60-second visual tour](docs/QUICK_TOUR.md), then inspect the com
 ## Run the public demo
 
 The repository now includes a deployable clean-room demo with original dummy data. Node.js 20 or newer is the only local requirement.
+
+[**Launch the public LIGHTBRINGER demo**](https://lightbringer-ai-animation-demo.jangrno123.chatgpt.site)
 
 ```bash
 npm start

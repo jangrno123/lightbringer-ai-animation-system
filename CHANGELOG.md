@@ -17,6 +17,8 @@ This file records public framework and working-demo releases. Commercial applica
 - server-side Anthropic and OpenAI-compatible adapters with explicit external-call opt-in;
 - API input/output caps, timeout handling, request IDs, and no automatic retry;
 - Docker and self-hosting instructions in Korean and English.
+- a public Mock-mode deployment with a no-login live demo URL;
+- Cloudflare Worker production builds in repository CI.
 
 ### Changed
 

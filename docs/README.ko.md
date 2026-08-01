@@ -4,7 +4,7 @@
 
 [한국어](README.ko.md) · [English](../README.md)
 
-[**공개 데모 실행 →**](#공개-데모-실행) · [60초 제품 투어](QUICK_TOUR.ko.md) · [실제 작동 사례](DEMO_CASE_STUDY.ko.md) · [워크플로우](WORKFLOW.md) · [토론](https://github.com/jangrno123/lightbringer-ai-animation-system/discussions)
+[**라이브 데모 열기 →**](https://lightbringer-ai-animation-demo.jangrno123.chatgpt.site) · [60초 제품 투어](QUICK_TOUR.ko.md) · [실제 작동 사례](DEMO_CASE_STUDY.ko.md) · [워크플로우](WORKFLOW.md) · [토론](https://github.com/jangrno123/lightbringer-ai-animation-system/discussions)
 
 **제안·시스템 설계: AI Creator BAO · 개발·운영: STUDIO GENESIS**
 
@@ -25,6 +25,8 @@
 ## 공개 데모 실행
 
 이 저장소에는 오리지널 더미 데이터로 작동하는 별도의 배포용 데모가 포함되어 있습니다. 로컬에서는 Node.js 20 이상만 있으면 실행할 수 있습니다.
+
+[**공개 라이트블링거 데모 실행**](https://lightbringer-ai-animation-demo.jangrno123.chatgpt.site)
 
 ```bash
 npm start

@@ -21,8 +21,19 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: "11.9.0"
+
       - name: Validate docs, examples, and public boundary
         run: node scripts/validate-public-repo.mjs
 
       - name: Test deployable demo and API guardrails
         run: node --test
+
+      - name: Install locked deployment dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Cloudflare Worker deployment
+        run: pnpm build
