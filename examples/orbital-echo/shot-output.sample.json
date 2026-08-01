@@ -1,0 +1,22 @@
+{
+  "shot_code": "DEMO-SH002",
+  "title": "아리아의 제한 시간",
+  "start_ms": 7000,
+  "end_ms": 16000,
+  "duration_ms": 9000,
+  "timing_lock": true,
+  "framing": "미디엄 클로즈업",
+  "camera": "고정 · 미세한 핸드헬드 진동",
+  "dialogue": {
+    "speaker": "아리아",
+    "line": "도약창이 닫히기까지 사십이 초. 이번에 놓치면 돌아갈 길이 없어."
+  },
+  "visual_direction": "깨진 콘솔의 붉은 오류광이 아리아의 얼굴 아래에서 반사된다.",
+  "audio_direction": "절제된 호흡과 콘솔 오류음.",
+  "performance": "관측창에서 시선을 떼지 않고 한 번의 호흡 뒤 대사를 끝까지 말한다.",
+  "location_code": "LB_OBSERVATION",
+  "asset_locks": [
+    "@ARIA_PILOT",
+    "@LB_OBSERVATION"
+  ]
+}

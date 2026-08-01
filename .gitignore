@@ -10,6 +10,7 @@ Thumbs.db
 node_modules/
 dist/
 .next/
+.wrangler/
 private/
 production-data/
 client-media/
