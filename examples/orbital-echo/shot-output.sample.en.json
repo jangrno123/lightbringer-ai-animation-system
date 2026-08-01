@@ -1,0 +1,22 @@
+{
+  "shot_code": "DEMO-SH002",
+  "title": "Aria's Time Limit",
+  "start_ms": 7000,
+  "end_ms": 16000,
+  "duration_ms": 9000,
+  "timing_lock": true,
+  "framing": "Medium close-up",
+  "camera": "Locked · subtle handheld vibration",
+  "dialogue": {
+    "speaker": "Aria",
+    "line": "Forty-two seconds until the jump gate closes. If we miss it now, there is no way back."
+  },
+  "visual_direction": "Red console error light reflects under Aria's face.",
+  "audio_direction": "Controlled breath and console error tone.",
+  "performance": "She keeps her eyes on the observation window and delivers the line after one measured breath.",
+  "location_code": "LB_OBSERVATION",
+  "asset_locks": [
+    "@ARIA_PILOT",
+    "@LB_OBSERVATION"
+  ]
+}

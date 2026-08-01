@@ -4,7 +4,7 @@
 
 ![LIGHTBRINGER — AI Animation Production System](assets/lightbringer-social-preview.png)
 
-[Working demo](docs/DEMO_CASE_STUDY.md) · [한국어 소개](docs/README.ko.md) · [Workflow](docs/WORKFLOW.md) · [Architecture](docs/ARCHITECTURE.md) · [Industry impact](docs/INDUSTRY_IMPACT.md) · [Adoption guide](docs/ADOPTION_GUIDE.md)
+[English](README.md) · [한국어](docs/README.ko.md) · [Working demo](docs/DEMO_CASE_STUDY.md) · [한국어 데모](docs/DEMO_CASE_STUDY.ko.md) · [Workflow](docs/WORKFLOW.md) · [Architecture](docs/ARCHITECTURE.md) · [Industry impact](docs/INDUSTRY_IMPACT.md) · [Adoption guide](docs/ADOPTION_GUIDE.md)
 
 **Proposed and architected by AI Creator BAO · Developed and operated by STUDIO GENESIS**
 
@@ -18,7 +18,7 @@ LIGHTBRINGER was proposed and system-architected by **AI Creator BAO**, then dev
 
 This repository now includes a captured end-to-end run from the working LIGHTBRINGER application. The isolated demo project **ORBITAL ECHO** uses an original 42-second Korean screenplay, two stable segments, six production shots, five synchronized asset identities, Korean and English prompt masters, a render cost gate, and completed storyboard history.
 
-![LIGHTBRINGER segment explorer and shot timing](assets/demo/02-shot-design.png)
+![LIGHTBRINGER segment explorer and shot timing](assets/demo/en/02-shot-design.png)
 
 | Screenplay | Segments | Shots | Asset identities | Completed storyboard attempts | Failed stages |
 | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -26,8 +26,8 @@ This repository now includes a captured end-to-end run from the working LIGHTBRI
 
 <table>
   <tr>
-    <td width="50%"><img src="assets/demo/03-continuity-assets.png" alt="Shot-level continuity and asset synchronization"></td>
-    <td width="50%"><img src="assets/demo/06-render-results.png" alt="Completed storyboard attempts and render history"></td>
+    <td width="50%"><img src="assets/demo/en/03-continuity-assets.png" alt="Shot-level continuity and asset synchronization"></td>
+    <td width="50%"><img src="assets/demo/en/06-render-results.png" alt="Completed storyboard attempts and render history"></td>
   </tr>
   <tr>
     <td align="center"><b>Continuity + asset synchronization</b></td>
@@ -35,7 +35,7 @@ This repository now includes a captured end-to-end run from the working LIGHTBRI
   </tr>
 </table>
 
-[Open the illustrated case study](docs/DEMO_CASE_STUDY.md) · [Read the screenplay input](examples/orbital-echo/input-screenplay.ko.txt) · [Inspect a shot record](examples/orbital-echo/shot-output.sample.json) · [Inspect the prompt master](examples/orbital-echo/prompt-master.sample.json)
+[Open the illustrated case study](docs/DEMO_CASE_STUDY.md) · [Read the English screenplay](examples/orbital-echo/input-screenplay.en.txt) · [Read the Korean screenplay](examples/orbital-echo/input-screenplay.ko.txt) · [Inspect the bilingual prompt master](examples/orbital-echo/prompt-master.sample.json)
 
 The demo uses the real application UI, API contracts, data schemas, progression rules, asset bindings, prompt surfaces, and render-history components. Its isolated output is deterministic so the walkthrough can be reproduced without revealing client work or spending external model credits.
 

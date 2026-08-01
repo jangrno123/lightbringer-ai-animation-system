@@ -1,5 +1,7 @@
 # 라이트블링거
 
+[한국어](README.ko.md) · [English](../README.md) · [한국어 데모](DEMO_CASE_STUDY.ko.md) · [English demo](DEMO_CASE_STUDY.md)
+
 ## AI 애니메이션을 위한 인간 승인형 제작 운영 시스템
 
 **제안·시스템 설계: AI Creator BAO · 개발·운영: STUDIO GENESIS**
@@ -27,8 +29,10 @@ AI로 한두 개의 멋진 샷을 만드는 것은 빠릅니다. 하지만 한 �
 | ---: | ---: | ---: | ---: | ---: | ---: |
 | 42초 | 2개 | 6개 | 5개 | 3개 | 0개 |
 
-- [전체 실행 사례와 화면 보기](DEMO_CASE_STUDY.md)
+- [한국어 전체 실행 사례와 화면 보기](DEMO_CASE_STUDY.ko.md)
+- [영문 화면과 실행 사례 보기](DEMO_CASE_STUDY.md)
 - [더미 대본 원문 보기](../examples/orbital-echo/input-screenplay.ko.txt)
+- [영문 대본 보기](../examples/orbital-echo/input-screenplay.en.txt)
 - [샷 데이터 예시 보기](../examples/orbital-echo/shot-output.sample.json)
 - [프롬프트 정본 예시 보기](../examples/orbital-echo/prompt-master.sample.json)
 

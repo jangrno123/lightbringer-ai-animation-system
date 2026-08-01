@@ -1,5 +1,7 @@
 # Working demo case study — ORBITAL ECHO
 
+[English](DEMO_CASE_STUDY.md) · [한국어](DEMO_CASE_STUDY.ko.md)
+
 This case study shows LIGHTBRINGER operating on an original, non-client screenplay. It was created to demonstrate the product without exposing an unreleased title, production asset, user account, or API credential.
 
 > Proposed and system-architected by **AI Creator BAO** · Developed and operated by **STUDIO GENESIS**
@@ -23,45 +25,34 @@ The screenshots were captured from the working LIGHTBRINGER application using an
 ## Original screenplay input
 
 ```text
-INT. 라이트블링거 관측실 - 인공 야간
+INT. LIGHTBRINGER OBSERVATION ROOM - ARTIFICIAL NIGHT
 
-푸른 항성광이 금이 간 관측창을 가른다. 경보등이 느리게 회전한다.
-조종사 아리아가 깨진 홀로그램 콘솔 위에 손을 얹는다.
+Blue starlight cuts across the cracked observation window. Pilot ARIA rests one hand on a fractured holographic console.
 
-아리아
-(숨을 고르며, 관측창을 응시한다)
-도약창이 닫히기까지 사십이 초. 이번에 놓치면 돌아갈 길이 없어.
+ARIA
+(steadying her breath, eyes fixed on the window)
+Forty-two seconds until the jump gate closes. If we miss it now, there is no way back.
 
-콘솔의 항로가 붉게 끊긴다. 청색 홀로그램으로 항법사 녹스가 나타난다.
+Navigator NOX appears as a cyan hologram and reports an unregistered life sign. The black reconnaissance drone WARDEN-7 descends through a buckling ceiling panel.
 
-녹스 (O.S.)
-(낮고 침착하게)
-우현 외벽에서 미등록 생체 신호를 감지했습니다.
-
-천장 패널이 안쪽으로 휘어진다. 검은 정찰 드론 워든-7이 여섯 개의
-다리를 펼치며 내려온다. 금속 마찰음이 관측실에 길게 번진다.
-
-아리아
-(드론을 향해 몸을 틀며)
-비상 차단벽을 내려. 신호는 내가 확인한다.
-
-녹스의 홀로그램이 흔들린다. 닫혀 가는 도약창의 푸른빛이
-드론의 단안에 반사된다.
+ARIA
+(turning toward the drone)
+Drop the emergency bulkhead. I will verify the signal.
 ```
 
-The exact source is also available as [`examples/orbital-echo/input-screenplay.ko.txt`](../examples/orbital-echo/input-screenplay.ko.txt).
+The complete sources are available in [English](../examples/orbital-echo/input-screenplay.en.txt) and [Korean](../examples/orbital-echo/input-screenplay.ko.txt).
 
 ## 1. Approved screenplay
 
 The screenplay is reviewed before any model-intensive production stage. The selected scene shows its source, approval state, assignee, duration, and comment history.
 
-![Approved screenplay in LIGHTBRINGER](../assets/demo/01-approved-screenplay.png)
+![Approved screenplay in LIGHTBRINGER](../assets/demo/en/01-approved-screenplay.png)
 
 ## 2. Segment explorer and shot timing
 
 LIGHTBRINGER divides the 42-second scene into two stable work units. Each segment remains independently selectable, retryable, and reviewable. The selected segment exposes one shot at a time instead of expanding every shot in the episode.
 
-![Segment explorer and shot timing](../assets/demo/02-shot-design.png)
+![Segment explorer and shot timing](../assets/demo/en/02-shot-design.png)
 
 Example output for `DEMO-SH002`:
 
@@ -70,17 +61,17 @@ Example output for `DEMO-SH002`:
 | Duration | 9 seconds |
 | Framing | Medium close-up |
 | Camera | Locked camera with subtle handheld vibration |
-| Dialogue | 아리아: 도약창이 닫히기까지 사십이 초. 이번에 놓치면 돌아갈 길이 없어. |
+| Dialogue | Aria: Forty-two seconds until the jump gate closes. If we miss it now, there is no way back. |
 | Visual direction | Red console error light reflects under Aria's face |
 | Audio direction | Controlled breath and console error tone |
 
-The machine-readable sample is available at [`examples/orbital-echo/shot-output.sample.json`](../examples/orbital-echo/shot-output.sample.json).
+The machine-readable samples are available in [English](../examples/orbital-echo/shot-output.sample.en.json) and [Korean](../examples/orbital-echo/shot-output.sample.json).
 
 ## 3. Continuity and asset synchronization
 
 Characters and locations are production identities, not names pasted into prompts. Each shot can use a different subset of scene assets. The green indicators show that the selected shot's visible character and location identities are bound.
 
-![Continuity and asset synchronization](../assets/demo/03-continuity-assets.png)
+![Continuity and asset synchronization](../assets/demo/en/03-continuity-assets.png)
 
 Demo identities:
 
@@ -99,7 +90,7 @@ Prompt generation begins only after timing and continuity are ready. Shared styl
 - English storyboard master for a still frame;
 - shot-specific negative additions.
 
-![Prompt master editor](../assets/demo/04-prompt-master.png)
+![Prompt master editor](../assets/demo/en/04-prompt-master.png)
 
 The complete sample structure is available at [`examples/orbital-echo/prompt-master.sample.json`](../examples/orbital-echo/prompt-master.sample.json).
 
@@ -107,9 +98,9 @@ The complete sample structure is available at [`examples/orbital-echo/prompt-mas
 
 Render requests show eligible shots and estimated credits before execution. Completed attempts remain grouped by shot so regeneration never erases the earlier result.
 
-![Render planning workspace](../assets/demo/05-render-storyboard.png)
+![Render planning workspace](../assets/demo/en/05-render-storyboard.png)
 
-![Completed storyboard attempts](../assets/demo/06-render-results.png)
+![Completed storyboard attempts](../assets/demo/en/06-render-results.png)
 
 ### Demo storyboard contact sheet
 
