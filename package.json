@@ -1,0 +1,16 @@
+{
+  "name": "lightbringer-public-demo",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Deployable public demo for the LIGHTBRINGER AI animation workflow",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node --watch server.mjs",
+    "start": "node server.mjs",
+    "test": "node --test",
+    "validate": "node scripts/validate-public-repo.mjs && node --test"
+  }
+}

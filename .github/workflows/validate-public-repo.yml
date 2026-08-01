@@ -23,3 +23,6 @@ jobs:
 
       - name: Validate docs, examples, and public boundary
         run: node scripts/validate-public-repo.mjs
+
+      - name: Test deployable demo and API guardrails
+        run: node --test

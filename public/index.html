@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LIGHTBRINGER public AI animation workflow demo">
+  <title>LIGHTBRINGER · Public Workflow Demo</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="space-glow" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="LIGHTBRINGER home">
+      <span class="brand-mark">SG</span>
+      <span><b>LIGHTBRINGER</b><small>AI ANIMATION SYSTEM</small></span>
+    </a>
+    <div class="top-actions">
+      <span id="engineBadge" class="engine-badge"><i></i><span>API CHECK</span></span>
+      <button id="apiSetupButton" class="ghost-button" type="button">API SETUP</button>
+      <button id="languageButton" class="language-button" type="button">EN</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <aside class="rail">
+      <div class="project-label">PUBLIC DEMO</div>
+      <h1>ORBITAL<br>ECHO</h1>
+      <p id="sceneLabel">DEMO-SC001 · 무음 궤도의 신호</p>
+      <nav id="workflowNav" class="workflow-nav" aria-label="Production workflow">
+        <button class="workflow-step active" data-stage="screenplay" type="button"><span>01</span><b data-ko="대본" data-en="Screenplay">대본</b><small data-ko="승인 원문" data-en="Approved source">승인 원문</small></button>
+        <button class="workflow-step" data-stage="shots" type="button" disabled><span>02</span><b data-ko="샷·타이밍" data-en="Shots & timing">샷·타이밍</b><small data-ko="구간 탐색" data-en="Segment explorer">구간 탐색</small></button>
+        <button class="workflow-step" data-stage="continuity" type="button" disabled><span>03</span><b data-ko="연속성" data-en="Continuity">연속성</b><small data-ko="에셋 동기화" data-en="Asset sync">에셋 동기화</small></button>
+        <button class="workflow-step" data-stage="prompts" type="button" disabled><span>04</span><b data-ko="프롬프트" data-en="Prompts">프롬프트</b><small data-ko="한·영 정본" data-en="KO / EN masters">한·영 정본</small></button>
+        <button class="workflow-step" data-stage="render" type="button" disabled><span>05</span><b data-ko="렌더" data-en="Render">렌더</b><small data-ko="비용 승인" data-en="Cost gate">비용 승인</small></button>
+      </nav>
+      <div class="rail-note">
+        <span>DEMO MODE</span>
+        <p data-ko="작품·계정·상용 소스가 포함되지 않은 공개용 더미입니다." data-en="Public dummy data only. No client work, accounts, or commercial source.">작품·계정·상용 소스가 포함되지 않은 공개용 더미입니다.</p>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <div class="workspace-head">
+        <div>
+          <span id="stageEyebrow" class="eyebrow">01 · APPROVED SCREENPLAY</span>
+          <h2 id="stageTitle">대본에서 제작 데이터까지</h2>
+          <p id="stageDescription">더미 대본을 확인하고 분석을 실행하세요. Mock 모드에서는 비용이 발생하지 않습니다.</p>
+        </div>
+        <div id="progressBlock" class="progress-block">
+          <strong id="progressValue">0%</strong>
+          <span data-ko="데모 진행률" data-en="Demo progress">데모 진행률</span>
+        </div>
+      </div>
+
+      <div id="notice" class="notice" role="status" aria-live="polite"></div>
+
+      <section class="stage-panel active" data-panel="screenplay">
+        <div class="editor-grid">
+          <article class="card screenplay-card">
+            <div class="card-head">
+              <div><span class="card-kicker">SOURCE · v001</span><h3 data-ko="승인 대본" data-en="Approved screenplay">승인 대본</h3></div>
+              <span class="status-chip approved" data-ko="승인됨" data-en="Approved">승인됨</span>
+            </div>
+            <textarea id="screenplayInput" spellcheck="false" aria-label="Demo screenplay"></textarea>
+            <div class="text-meta"><span id="characterCount">0 / 12,000</span><span data-ko="공개 더미 데이터" data-en="Public dummy data">공개 더미 데이터</span></div>
+          </article>
+          <aside class="card decision-card">
+            <span class="card-kicker">COST GATE 01</span>
+            <h3 data-ko="분석 전 확인" data-en="Before analysis">분석 전 확인</h3>
+            <ul>
+              <li data-ko="기본 Mock 모드: $0" data-en="Default Mock mode: $0">기본 Mock 모드: $0</li>
+              <li data-ko="외부 API는 서버에서만 호출" data-en="External API is called server-side only">외부 API는 서버에서만 호출</li>
+              <li data-ko="자동 재시도 없음" data-en="No automatic retry">자동 재시도 없음</li>
+              <li data-ko="원문 12,000자 제한" data-en="12,000-character input limit">원문 12,000자 제한</li>
+            </ul>
+            <label class="confirm-row"><input id="costConfirm" type="checkbox" checked><span data-ko="현재 엔진과 호출 범위를 확인했습니다." data-en="I reviewed the current engine and request scope.">현재 엔진과 호출 범위를 확인했습니다.</span></label>
+            <button id="analyzeButton" class="primary-button" type="button"><span data-ko="대본 분석하기" data-en="Analyze screenplay">대본 분석하기</span><i>→</i></button>
+            <p id="requestMeta" class="request-meta"></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="stage-panel" data-panel="shots">
+        <div class="production-grid">
+          <aside class="card explorer-card">
+            <div class="card-head"><div><span class="card-kicker">SEGMENT EXPLORER</span><h3 data-ko="대본 구간" data-en="Screenplay segments">대본 구간</h3></div><span id="segmentCount" class="count-badge">0</span></div>
+            <div id="segmentList" class="segment-list"></div>
+          </aside>
+          <article class="card shot-card">
+            <div class="card-head"><div><span id="shotCode" class="card-kicker">SELECT A SHOT</span><h3 id="shotTitle" data-ko="샷을 선택하세요" data-en="Select a shot">샷을 선택하세요</h3></div><span id="shotDuration" class="status-chip">—</span></div>
+            <div id="shotEditor" class="shot-editor empty-state" data-ko="왼쪽 탐색기에서 구간과 샷을 선택하세요." data-en="Select a segment and shot from the explorer.">왼쪽 탐색기에서 구간과 샷을 선택하세요.</div>
+            <div class="stage-footer"><span data-ko="수정 사항은 이 데모 세션에만 유지됩니다." data-en="Edits remain only in this demo session.">수정 사항은 이 데모 세션에만 유지됩니다.</span><button class="next-button" data-next="continuity" type="button" data-ko="연속성 확인 →" data-en="Review continuity →">연속성 확인 →</button></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="stage-panel" data-panel="continuity">
+        <div class="continuity-layout">
+          <article class="card continuity-card">
+            <div class="card-head"><div><span class="card-kicker">IDENTITY LOCK</span><h3 data-ko="샷별 인물·장소 흐름" data-en="Shot identity and location flow">샷별 인물·장소 흐름</h3></div><span class="status-chip approved" data-ko="충돌 0" data-en="0 conflicts">충돌 0</span></div>
+            <div id="continuityRows" class="continuity-rows"></div>
+          </article>
+          <aside class="card library-card">
+            <span class="card-kicker">SCENE ASSET LIBRARY</span>
+            <h3 data-ko="동기화된 에셋" data-en="Synchronized assets">동기화된 에셋</h3>
+            <div id="assetLibrary" class="asset-library"></div>
+            <button class="next-button full" data-next="prompts" type="button" data-ko="프롬프트 확인 →" data-en="Review prompts →">프롬프트 확인 →</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="stage-panel" data-panel="prompts">
+        <div class="prompt-layout">
+          <article class="card common-prompt-card">
+            <span class="card-kicker">PROJECT MASTER</span><h3 data-ko="공통 프롬프트" data-en="Shared prompt master">공통 프롬프트</h3>
+            <label><span>STYLE</span><textarea id="commonPrompt">2D cel animation, Korean dark science-fantasy, cold blue starlight, clean silhouettes, consistent character sheets</textarea></label>
+            <label><span>NEGATIVE</span><textarea id="negativePrompt">distorted anatomy, duplicate characters, extra limbs, unwanted text, subtitles, broken aspect ratio, asset identity drift</textarea></label>
+          </article>
+          <article class="card shot-prompt-card">
+            <div class="card-head"><div><span class="card-kicker">SHOT MASTER</span><h3 data-ko="선택 샷 생성 정본" data-en="Selected shot generation master">선택 샷 생성 정본</h3></div><select id="promptShotSelect" aria-label="Prompt shot"></select></div>
+            <div class="prompt-tabs"><button class="active" type="button">EN VIDEO</button><button type="button">KO REVIEW</button></div>
+            <textarea id="shotPrompt"></textarea>
+            <div class="layer-strip"><span>IDENTITY</span><span>COMPOSITION</span><span>ACTION</span><span>CAMERA</span><span>AUDIO</span><span>NEGATIVE</span></div>
+            <div class="stage-footer"><span data-ko="실제 생성 전 사람이 정본을 승인합니다." data-en="A human approves the master before generation.">실제 생성 전 사람이 정본을 승인합니다.</span><button class="next-button" data-next="render" type="button" data-ko="렌더 준비 →" data-en="Prepare render →">렌더 준비 →</button></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="stage-panel" data-panel="render">
+        <div class="render-grid">
+          <article class="card render-preview">
+            <div class="preview-image"><img src="/assets/demo/lightbringer-demo-storyboard.png" alt="ORBITAL ECHO storyboard preview"><span data-ko="더미 스토리보드" data-en="Dummy storyboard">더미 스토리보드</span></div>
+            <div class="card-head render-summary"><div><span class="card-kicker">RENDER TARGET</span><h3 data-ko="스토리보드 생성" data-en="Generate storyboard">스토리보드 생성</h3></div><span class="status-chip" data-ko="3 샷" data-en="3 shots">3 샷</span></div>
+          </article>
+          <aside class="card decision-card">
+            <span class="card-kicker">COST GATE 02</span><h3 data-ko="요청 전 최종 승인" data-en="Final request approval">요청 전 최종 승인</h3>
+            <div class="cost-row"><span data-ko="대상" data-en="Targets">대상</span><strong data-ko="승인된 3개 샷" data-en="3 approved shots">승인된 3개 샷</strong></div>
+            <div class="cost-row"><span data-ko="엔진" data-en="Engine">엔진</span><strong data-ko="더미 렌더러" data-en="Dummy renderer">더미 렌더러</strong></div>
+            <div class="cost-row total"><span data-ko="예상 비용" data-en="Estimated cost">예상 비용</span><strong>$0.00</strong></div>
+            <button id="renderButton" class="primary-button" type="button"><span data-ko="더미 대기열 생성" data-en="Create dummy queue">더미 대기열 생성</span><i>→</i></button>
+            <div id="renderHistory" class="render-history"></div>
+          </aside>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="apiDialog">
+    <form method="dialog">
+      <div class="dialog-head"><div><span class="card-kicker">BRING YOUR OWN API</span><h2 data-ko="서버에서 API 연결" data-en="Connect an API on the server">서버에서 API 연결</h2></div><button value="close" aria-label="Close">×</button></div>
+      <p data-ko="키는 이 화면이나 브라우저 저장소에 입력하지 않습니다. 배포 서비스의 비밀 환경변수에만 저장하세요." data-en="Never enter keys in this screen or browser storage. Store them only in your deployment service's secret environment variables.">키는 이 화면이나 브라우저 저장소에 입력하지 않습니다. 배포 서비스의 비밀 환경변수에만 저장하세요.</p>
+      <pre>LIGHTBRINGER_PROVIDER=anthropic
+LIGHTBRINGER_EXTERNAL_API_ENABLED=true
+LIGHTBRINGER_API_BASE_URL=https://api.anthropic.com
+LIGHTBRINGER_API_KEY=••••••••
+LIGHTBRINGER_MODEL=your-model-name</pre>
+      <div class="security-note"><b data-ko="안전장치" data-en="Guardrails">안전장치</b><span data-ko="입력·출력 제한, 서버 호출, 90초 타임아웃, 자동 재시도 없음" data-en="Input/output caps, server-side calls, 90s timeout, no automatic retry">입력·출력 제한, 서버 호출, 90초 타임아웃, 자동 재시도 없음</span></div>
+      <button class="primary-button" value="close" data-ko="확인" data-en="Got it">확인</button>
+    </form>
+  </dialog>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

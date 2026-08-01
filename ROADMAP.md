@@ -11,7 +11,11 @@
 - [x] Publish a vendor-neutral prompt canon example
 - [x] Publish bilingual Korean and English demo navigation
 - [x] Add automated public-boundary and documentation validation
+- [x] Publish a deployable clean-room dummy workflow
+- [x] Add a zero-cost Mock API and server-side BYO LLM adapters
+- [x] Add automated demo and API-guardrail tests
 - [ ] Publish a cost-per-approved-second evaluation template
+- [ ] Add a vendor-neutral image and video render provider adapter
 
 ## Production system
 

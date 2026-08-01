@@ -6,7 +6,7 @@
 
 [English](README.md) · [한국어](docs/README.ko.md)
 
-[**60-second product tour →**](docs/QUICK_TOUR.md) · [Working case study](docs/DEMO_CASE_STUDY.md) · [Workflow](docs/WORKFLOW.md) · [Architecture](docs/ARCHITECTURE.md) · [Discuss](https://github.com/jangrno123/lightbringer-ai-animation-system/discussions)
+[**Run the public demo →**](#run-the-public-demo) · [60-second tour](docs/QUICK_TOUR.md) · [Working case study](docs/DEMO_CASE_STUDY.md) · [Workflow](docs/WORKFLOW.md) · [Discuss](https://github.com/jangrno123/lightbringer-ai-animation-system/discussions)
 
 **Proposed and system-architected by AI Creator BAO · Developed and operated by STUDIO GENESIS**
 
@@ -23,6 +23,18 @@ The original public demo **ORBITAL ECHO** follows one 42-second scene through th
 | 42 sec | 2 | 6 | 5 | 3 | 0 |
 
 Start with the [60-second visual tour](docs/QUICK_TOUR.md), then inspect the complete [English](docs/DEMO_CASE_STUDY.md) or [Korean](docs/DEMO_CASE_STUDY.ko.md) case study.
+
+## Run the public demo
+
+The repository now includes a deployable clean-room demo with original dummy data. Node.js 20 or newer is the only local requirement.
+
+```bash
+npm start
+```
+
+Open `http://localhost:4173`. The default deterministic Mock API costs nothing. To connect your own LLM, store its key in server-side secret environment variables—never in the browser—and select either the Anthropic or OpenAI-compatible adapter.
+
+[Self-hosting and BYO API guide →](docs/SELF_HOSTED_DEMO.md)
 
 ## What the system does
 
@@ -65,13 +77,14 @@ See the full [workflow specification](docs/WORKFLOW.md) and [reference architect
 
 ## What is public
 
-This repository is a **public workflow specification and working-product case study**, not the commercial application source distribution.
+This repository is a **public workflow specification, working-product case study, and clean-room runnable demo**, not the commercial application source distribution.
 
 Included:
 
 - real application screenshots in Korean and English;
 - an original neutral screenplay and editable shot records;
 - bilingual prompt-master examples;
+- a deployable dummy UI, deterministic Mock API, and server-side BYO API adapters;
 - workflow, architecture, adoption, and evaluation documents;
 - issue templates for production feedback.
 
@@ -93,6 +106,7 @@ Not included:
 | Adopt the stages in another stack | [Adoption guide](docs/ADOPTION_GUIDE.md) |
 | Evaluate outcomes without inflated claims | [Industry impact and metrics](docs/INDUSTRY_IMPACT.md) |
 | Inspect machine-readable examples | [`examples/orbital-echo`](examples/orbital-echo/README.md) |
+| Run safely or connect your own API | [Self-hosted demo guide](docs/SELF_HOSTED_DEMO.md) |
 
 ## Status and participation
 

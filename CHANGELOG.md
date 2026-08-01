@@ -12,6 +12,11 @@ This file records public framework and working-demo releases. Commercial applica
 - twelve real application screenshots from the isolated ORBITAL ECHO demo;
 - machine-readable shot, prompt, and run-summary examples;
 - automated JSON, local-link, image, and public-boundary validation.
+- a responsive, deployable clean-room workflow demo;
+- a deterministic zero-cost Mock API;
+- server-side Anthropic and OpenAI-compatible adapters with explicit external-call opt-in;
+- API input/output caps, timeout handling, request IDs, and no automatic retry;
+- Docker and self-hosting instructions in Korean and English.
 
 ### Changed
 

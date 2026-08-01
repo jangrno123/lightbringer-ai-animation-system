@@ -4,7 +4,7 @@
 
 [한국어](README.ko.md) · [English](../README.md)
 
-[**60초 제품 투어 →**](QUICK_TOUR.ko.md) · [실제 작동 사례](DEMO_CASE_STUDY.ko.md) · [워크플로우](WORKFLOW.md) · [아키텍처](ARCHITECTURE.md) · [토론](https://github.com/jangrno123/lightbringer-ai-animation-system/discussions)
+[**공개 데모 실행 →**](#공개-데모-실행) · [60초 제품 투어](QUICK_TOUR.ko.md) · [실제 작동 사례](DEMO_CASE_STUDY.ko.md) · [워크플로우](WORKFLOW.md) · [토론](https://github.com/jangrno123/lightbringer-ai-animation-system/discussions)
 
 **제안·시스템 설계: AI Creator BAO · 개발·운영: STUDIO GENESIS**
 
@@ -21,6 +21,18 @@
 | 42초 | 2개 | 6개 | 5개 | 3개 | 0개 |
 
 먼저 [60초 제품 투어](QUICK_TOUR.ko.md)를 보고, 전체 [한국어](DEMO_CASE_STUDY.ko.md) 또는 [English](DEMO_CASE_STUDY.md) 실행 사례를 확인해 주세요.
+
+## 공개 데모 실행
+
+이 저장소에는 오리지널 더미 데이터로 작동하는 별도의 배포용 데모가 포함되어 있습니다. 로컬에서는 Node.js 20 이상만 있으면 실행할 수 있습니다.
+
+```bash
+npm start
+```
+
+`http://localhost:4173`을 엽니다. 기본 Mock API는 비용이 전혀 들지 않습니다. 사용자 소유 LLM을 연결할 때는 키를 브라우저가 아니라 서버 비밀 환경변수에 저장하고 Anthropic 또는 OpenAI 호환 어댑터를 선택합니다.
+
+[자체 호스팅·사용자 API 연결 안내 →](SELF_HOSTED_DEMO.ko.md)
 
 ## 무엇을 하는 시스템인가
 
@@ -63,13 +75,14 @@ AI로 한 개의 샷을 만드는 것은 빠르지만, 한 편의 에피소드�
 
 ## 공개 범위
 
-이 저장소는 **공개 워크플로우 명세와 실제 작동 사례**입니다. 상용 애플리케이션 소스 배포 저장소는 아닙니다.
+이 저장소는 **공개 워크플로우 명세, 실제 작동 사례와 별도로 구현한 실행형 더미 데모**입니다. 상용 애플리케이션 전체 소스 배포 저장소는 아닙니다.
 
 공개하는 것:
 
 - 실제 애플리케이션의 한글·영문 화면;
 - 저작권 문제가 없는 오리지널 대본과 샷 데이터;
 - 한글·영문 프롬프트 정본 예제;
+- 배포 가능한 더미 UI, 비용 없는 Mock API와 서버측 사용자 API 어댑터;
 - 워크플로우, 아키텍처, 도입·평가 문서;
 - 제작 피드백을 위한 이슈 양식.
 
@@ -91,6 +104,7 @@ AI로 한 개의 샷을 만드는 것은 빠르지만, 한 편의 에피소드�
 | 다른 제작 환경에 도입 | [도입 가이드](ADOPTION_GUIDE.md) |
 | 성과 측정 기준 확인 | [업계 효과와 지표](INDUSTRY_IMPACT.md) |
 | 데이터 예제 확인 | [`examples/orbital-echo`](../examples/orbital-echo/README.md) |
+| 안전하게 실행하거나 자체 API 연결 | [자체 호스팅 데모 안내](SELF_HOSTED_DEMO.ko.md) |
 
 ## 현재 상태와 참여
 

@@ -2,7 +2,9 @@
 
 ## Public repository scope
 
-This repository contains public documentation and reference architecture only. The commercial production application, client projects, media, credentials, and infrastructure configuration are private.
+This repository contains public documentation, reference architecture, and a clean-room dummy application. The commercial production application, client projects, production media, credentials, and infrastructure configuration remain private.
+
+The demo keeps provider keys on the server. Do not modify it to accept or persist API keys in browser storage. External API calls must remain explicitly disabled by default.
 
 ## Do not report publicly
 
