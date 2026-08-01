@@ -2,7 +2,8 @@ import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
-import { analyzeScreenplay, providerConfig, publicProviderStatus } from "./lib/provider.mjs";
+import { analyzeScreenplay, listPublicProviderStatus, providerConfig, publicProviderStatus } from "./lib/provider.mjs";
+import { createRenderJob, getRenderJob, listPublicVideoProviderStatus, publicVideoProviderStatus, videoProviderConfig } from "./lib/video-provider.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 const publicRoot = join(root, "public");
@@ -80,13 +81,30 @@ export function createAppServer() {
     const url = new URL(req.url || "/", "http://localhost");
     try {
       if (req.method === "GET" && url.pathname === "/api/health") {
-        return json(res, 200, { ok: true, requestId, ...publicProviderStatus(providerConfig()) });
+        return json(res, 200, {
+          ok: true,
+          requestId,
+          ...publicProviderStatus(providerConfig()),
+          providers: listPublicProviderStatus(),
+          video: publicVideoProviderStatus(videoProviderConfig()),
+          videoProviders: listPublicVideoProviderStatus()
+        });
       }
       if (req.method === "POST" && url.pathname === "/api/v1/screenplay/analyze") {
         const body = await readJson(req);
         const startedAt = Date.now();
-        const output = await analyzeScreenplay({ screenplay: body.screenplay, language: body.language });
+        const output = await analyzeScreenplay({ screenplay: body.screenplay, language: body.language, provider: body.provider });
         return json(res, 200, { ok: true, requestId, elapsedMs: Date.now() - startedAt, ...output });
+      }
+      if (req.method === "POST" && url.pathname === "/api/v1/render/jobs") {
+        const body = await readJson(req);
+        const job = await createRenderJob(body);
+        return json(res, job.status === "completed" ? 200 : 202, { ok: true, requestId, job });
+      }
+      if (req.method === "GET" && url.pathname.startsWith("/api/v1/render/jobs/")) {
+        const id = decodeURIComponent(url.pathname.slice("/api/v1/render/jobs/".length));
+        const job = await getRenderJob(id, url.searchParams.get("provider") || undefined);
+        return json(res, 200, { ok: true, requestId, job });
       }
       if (req.method === "GET" || req.method === "HEAD") {
         if (await serveStatic(res, url.pathname)) return;

@@ -73,6 +73,7 @@
               <li data-ko="자동 재시도 없음" data-en="No automatic retry">자동 재시도 없음</li>
               <li data-ko="원문 12,000자 제한" data-en="12,000-character input limit">원문 12,000자 제한</li>
             </ul>
+            <label class="engine-picker" for="llmProviderSelect"><span data-ko="대본 분석 엔진" data-en="Screenplay engine">대본 분석 엔진</span><select id="llmProviderSelect" aria-label="Screenplay analysis provider"><option value="mock">LIGHTBRINGER Mock</option></select></label>
             <label class="confirm-row"><input id="costConfirm" type="checkbox" checked><span data-ko="현재 엔진과 호출 범위를 확인했습니다." data-en="I reviewed the current engine and request scope.">현재 엔진과 호출 범위를 확인했습니다.</span></label>
             <button id="analyzeButton" class="primary-button" type="button"><span data-ko="대본 분석하기" data-en="Analyze screenplay">대본 분석하기</span><i>→</i></button>
             <p id="requestMeta" class="request-meta"></p>
@@ -137,6 +138,8 @@
             <div class="cost-row"><span data-ko="대상" data-en="Targets">대상</span><strong data-ko="승인된 3개 샷" data-en="3 approved shots">승인된 3개 샷</strong></div>
             <div class="cost-row"><span data-ko="엔진" data-en="Engine">엔진</span><strong data-ko="더미 렌더러" data-en="Dummy renderer">더미 렌더러</strong></div>
             <div class="cost-row total"><span data-ko="예상 비용" data-en="Estimated cost">예상 비용</span><strong>$0.00</strong></div>
+            <label class="engine-picker" for="videoProviderSelect"><span data-ko="영상 생성 엔진" data-en="Video engine">영상 생성 엔진</span><select id="videoProviderSelect" aria-label="Video generation provider"><option value="mock">LIGHTBRINGER Mock Renderer</option></select></label>
+            <label class="confirm-row"><input id="renderCostConfirm" type="checkbox" checked><span data-ko="선택한 샷과 외부 API 비용 발생 가능성을 확인했습니다." data-en="I reviewed the selected shots and possible external API cost.">선택한 샷과 외부 API 비용 발생 가능성을 확인했습니다.</span></label>
             <button id="renderButton" class="primary-button" type="button"><span data-ko="더미 대기열 생성" data-en="Create dummy queue">더미 대기열 생성</span><i>→</i></button>
             <div id="renderHistory" class="render-history"></div>
           </aside>
@@ -147,14 +150,19 @@
 
   <dialog id="apiDialog">
     <form method="dialog">
-      <div class="dialog-head"><div><span class="card-kicker">BRING YOUR OWN API</span><h2 data-ko="서버에서 API 연결" data-en="Connect an API on the server">서버에서 API 연결</h2></div><button value="close" aria-label="Close">×</button></div>
-      <p data-ko="키는 이 화면이나 브라우저 저장소에 입력하지 않습니다. 배포 서비스의 비밀 환경변수에만 저장하세요." data-en="Never enter keys in this screen or browser storage. Store them only in your deployment service's secret environment variables.">키는 이 화면이나 브라우저 저장소에 입력하지 않습니다. 배포 서비스의 비밀 환경변수에만 저장하세요.</p>
-      <pre>LIGHTBRINGER_PROVIDER=anthropic
-LIGHTBRINGER_EXTERNAL_API_ENABLED=true
-LIGHTBRINGER_API_BASE_URL=https://api.anthropic.com
-LIGHTBRINGER_API_KEY=••••••••
-LIGHTBRINGER_MODEL=your-model-name</pre>
-      <div class="security-note"><b data-ko="안전장치" data-en="Guardrails">안전장치</b><span data-ko="입력·출력 제한, 서버 호출, 90초 타임아웃, 자동 재시도 없음" data-en="Input/output caps, server-side calls, 90s timeout, no automatic retry">입력·출력 제한, 서버 호출, 90초 타임아웃, 자동 재시도 없음</span></div>
+      <div class="dialog-head"><div><span class="card-kicker">BRING YOUR OWN API</span><h2 data-ko="서버에서 API 연결" data-en="Connect APIs on the server">서버에서 API 연결</h2></div><button value="close" aria-label="Close">×</button></div>
+      <p data-ko="API 키는 이 화면이나 브라우저 저장소에 입력하지 않습니다. 배포 서버의 암호화된 비밀 환경변수에만 저장하세요." data-en="Never enter keys in this screen or browser storage. Store them only in encrypted secret environment variables on the deployment server.">API 키는 이 화면이나 브라우저 저장소에 입력하지 않습니다. 배포 서버의 암호화된 비밀 환경변수에만 저장하세요.</p>
+      <div id="providerStatusList" class="provider-status-list"></div>
+      <pre>LIGHTBRINGER_LLM_EXTERNAL_ENABLED=true
+OPENAI_API_KEY=...
+OPENAI_MODEL=your-openai-model
+ANTHROPIC_API_KEY=...
+ANTHROPIC_MODEL=your-claude-model
+
+LIGHTBRINGER_VIDEO_EXTERNAL_ENABLED=true
+BYTEPLUS_API_KEY=...
+BYTEPLUS_SEEDANCE_MODEL=your-endpoint-or-model-id</pre>
+      <div class="security-note"><b data-ko="안전장치" data-en="Guardrails">안전장치</b><span data-ko="키는 서버에만 저장하며 유료 렌더는 명시적 비용 확인 후에만 요청합니다. 공개 데모는 Mock 모드로 유지하세요." data-en="Keys stay server-side, and paid renders require explicit cost confirmation. Keep public demos in Mock mode.">키는 서버에만 저장하며 유료 렌더는 명시적 비용 확인 후에만 요청합니다. 공개 데모는 Mock 모드로 유지하세요.</span></div>
       <button class="primary-button" value="close" data-ko="확인" data-en="Got it">확인</button>
     </form>
   </dialog>

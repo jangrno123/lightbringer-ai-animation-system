@@ -19,12 +19,16 @@ This file records public framework and working-demo releases. Commercial applica
 - Docker and self-hosting instructions in Korean and English.
 - a public Mock-mode deployment with a no-login live demo URL;
 - Cloudflare Worker production builds in repository CI.
+- selectable OpenAI Responses and Anthropic Messages adapters with strict screenplay JSON schemas;
+- BytePlus and Volcengine Ark Seedance task adapters with explicit cost confirmation;
+- provider readiness reporting, asynchronous render task IDs, and bilingual connection guides.
 
 ### Changed
 
 - shortened the repository landing page around a clear first-visit path;
 - moved the public/private product boundary near the top-level product explanation;
 - connected README participation links directly to Issues and Discussions.
+- replaced generic JSON parsing with provider-native structured outputs and normalized token usage.
 
 ## [0.1.0-framework] - 2026-08-01
 

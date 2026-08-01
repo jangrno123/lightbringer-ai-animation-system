@@ -15,7 +15,7 @@
 - [x] Add a zero-cost Mock API and server-side BYO LLM adapters
 - [x] Add automated demo and API-guardrail tests
 - [ ] Publish a cost-per-approved-second evaluation template
-- [ ] Add a vendor-neutral image and video render provider adapter
+- [x] Add a vendor-neutral image and video render provider adapter
 
 ## Production system
 

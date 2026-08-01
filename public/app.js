@@ -7,6 +7,9 @@ const state = {
   analysis: null,
   selectedShotId: null,
   provider: null,
+  providers: [],
+  videoProvider: null,
+  videoProviders: [],
   completedStages: new Set(["screenplay"])
 };
 
@@ -95,6 +98,12 @@ async function loadHealth() {
   try {
     const response = await fetch("/api/health");
     state.provider = await response.json();
+    state.providers = state.provider.providers || [state.provider];
+    state.videoProvider = state.provider.video || null;
+    state.videoProviders = state.provider.videoProviders || (state.videoProvider ? [state.videoProvider] : []);
+    fillProviderSelect("#llmProviderSelect", state.providers, state.provider.provider);
+    fillProviderSelect("#videoProviderSelect", state.videoProviders, state.videoProvider?.provider || "mock");
+    renderProviderStatus();
     badge.classList.add(state.provider.ready ? "ready" : "error");
     $("span", badge).textContent = `${state.provider.provider.toUpperCase()} · ${state.provider.ready ? copy[state.language].ready : "NOT READY"}`;
     updateCharacterCount();
@@ -102,6 +111,38 @@ async function loadHealth() {
     badge.classList.add("error");
     $("span", badge).textContent = "API OFFLINE";
   }
+}
+
+function fillProviderSelect(selector, providers, selected) {
+  const select = $(selector);
+  if (!select) return;
+  select.replaceChildren();
+  providers.forEach((provider) => {
+    const option = document.createElement("option");
+    option.value = provider.provider;
+    option.textContent = `${provider.label} · ${provider.ready ? provider.model : "NOT CONFIGURED"}`;
+    option.disabled = !provider.ready;
+    select.append(option);
+  });
+  const preferred = providers.find((provider) => provider.provider === selected && provider.ready)
+    || providers.find((provider) => provider.ready);
+  if (preferred) select.value = preferred.provider;
+}
+
+function renderProviderStatus() {
+  const list = $("#providerStatusList");
+  if (!list) return;
+  list.replaceChildren();
+  [...state.providers, ...state.videoProviders].forEach((provider) => {
+    const item = document.createElement("div");
+    item.className = `provider-status ${provider.ready ? "ready" : "offline"}`;
+    const label = document.createElement("b");
+    label.textContent = provider.label;
+    const detail = document.createElement("span");
+    detail.textContent = provider.ready ? provider.model : (state.language === "ko" ? "서버 설정 필요" : "Server configuration required");
+    item.append(label, detail);
+    list.append(item);
+  });
 }
 
 async function analyze() {
@@ -115,7 +156,7 @@ async function analyze() {
     const response = await fetch("/api/v1/screenplay/analyze", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ screenplay: $("#screenplayInput").value, language: state.language })
+      body: JSON.stringify({ screenplay: $("#screenplayInput").value, language: state.language, provider: $("#llmProviderSelect").value })
     });
     const payload = await response.json();
     if (!response.ok) throw new Error(payload.error || "Request failed");
@@ -238,16 +279,54 @@ function renderAnalysis() {
   renderPrompt();
 }
 
-function createDummyQueue() {
+async function createRenderQueue() {
+  if (!state.analysis) return notify(state.language === "ko" ? "대본 분석을 먼저 완료하세요." : "Analyze the screenplay first.", true);
+  if (!$("#renderCostConfirm").checked) return notify(state.language === "ko" ? "렌더 범위와 비용을 먼저 확인하세요." : "Confirm the render scope and cost first.", true);
   const history = $("#renderHistory");
   history.replaceChildren();
-  state.analysis.shots.forEach((shot, index) => {
+  const button = $("#renderButton");
+  button.disabled = true;
+  const provider = $("#videoProviderSelect").value;
+  let completed = 0;
+  for (const [index, shot] of state.analysis.shots.entries()) {
     const item = el("div", "history-item");
-    item.append(el("span", "", `${String(index + 1).padStart(2, "0")} · ${shot.id}`), el("b", "", "COMPLETED"));
+    const status = el("b", "", "CREATING");
+    item.append(el("span", "", `${String(index + 1).padStart(2, "0")} · ${shot.id}`), status);
     history.append(item);
-  });
-  notify(copy[state.language].dummyQueued);
-  $("#progressValue").textContent = "100%";
+    try {
+      const response = await fetch("/api/v1/render/jobs", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          provider,
+          shotId: shot.id,
+          prompt: promptFor(shot),
+          negativePrompt: $("#negativePrompt").value,
+          duration: Math.min(15, Math.max(1, Number(shot.durationSeconds) || 5)),
+          ratio: "16:9",
+          resolution: "1080p",
+          generateAudio: false,
+          confirmedCost: true
+        })
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error || "Render request failed");
+      status.textContent = payload.job.status.toUpperCase();
+      item.dataset.jobId = payload.job.id;
+      completed += 1;
+    } catch (error) {
+      status.textContent = "FAILED";
+      status.title = error.message;
+      item.classList.add("failed");
+    }
+  }
+  button.disabled = false;
+  if (completed === state.analysis.shots.length) {
+    notify(provider === "mock" ? copy[state.language].dummyQueued : (state.language === "ko" ? "Seedance 렌더 대기열을 생성했습니다." : "Seedance render queue created."));
+    $("#progressValue").textContent = "100%";
+  } else {
+    notify(state.language === "ko" ? `대기열 ${completed}/${state.analysis.shots.length}개 생성. 실패한 샷만 다시 요청하세요.` : `Created ${completed}/${state.analysis.shots.length} jobs. Retry failed shots only.`, true);
+  }
 }
 
 $("#workflowNav").addEventListener("click", (event) => {
@@ -262,7 +341,7 @@ $("#analyzeButton").addEventListener("click", analyze);
 $("#promptShotSelect").addEventListener("change", () => { state.selectedShotId = $("#promptShotSelect").value; renderPrompt(); });
 $("#commonPrompt").addEventListener("input", renderPrompt);
 $("#negativePrompt").addEventListener("input", renderPrompt);
-$("#renderButton").addEventListener("click", createDummyQueue);
+$("#renderButton").addEventListener("click", createRenderQueue);
 
 translateStatic();
 loadHealth();

@@ -8,8 +8,8 @@ export async function POST(request: Request) {
   try {
     const contentLength = Number(request.headers.get("content-length") || 0);
     if (contentLength > 256 * 1024) return Response.json({ ok: false, requestId, error: "Request body is too large." }, { status: 413 });
-    const body = await request.json() as { screenplay?: string; language?: string };
-    const output = await analyzeScreenplay({ screenplay: body.screenplay, language: body.language });
+    const body = await request.json() as { screenplay?: string; language?: string; provider?: string };
+    const output = await analyzeScreenplay({ screenplay: body.screenplay, language: body.language, provider: body.provider });
     return Response.json({ ok: true, requestId, elapsedMs: Date.now() - startedAt, ...output }, {
       headers: { "cache-control": "no-store", "x-content-type-options": "nosniff" }
     });
