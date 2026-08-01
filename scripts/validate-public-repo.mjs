@@ -43,8 +43,8 @@ for (const file of markdownFiles) {
 }
 
 const forbidden = [
-  /ANTHROPIC_API_KEY/i,
-  /OPENAI_API_KEY/i,
+  /sk-ant-[A-Za-z0-9_-]{20,}/,
+  /sk-(?:proj|svcacct)-[A-Za-z0-9_-]{20,}/,
   /chatgpt\.site\/admin/i,
   /창세기전/,
   /서풍의 광시곡/,

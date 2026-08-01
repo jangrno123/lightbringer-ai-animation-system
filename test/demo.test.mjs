@@ -60,6 +60,16 @@ test("HTTP demo exposes health and analysis without external cost", async (t) =>
   assert.equal(payload.ok, true);
   assert.equal(payload.result.shots.length, 3);
   assert.equal(payload.usage.inputTokens, 0);
+
+  const renderResponse = await fetch(`${base}/api/v1/render/jobs`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ provider: "mock", prompt: "A deterministic storyboard preview for a starship scene.", duration: 5, confirmedCost: true })
+  });
+  const renderPayload = await renderResponse.json();
+  assert.equal(renderResponse.status, 200);
+  assert.equal(renderPayload.job.status, "completed");
+  assert.match(renderPayload.job.id, /^mock_/);
 });
 
 test("short screenplay is rejected before any provider request", async () => {

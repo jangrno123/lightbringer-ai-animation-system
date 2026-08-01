@@ -36,7 +36,7 @@ npm start
 
 Open `http://localhost:4173`. The default deterministic Mock API costs nothing. To connect your own LLM, store its key in server-side secret environment variables—never in the browser—and select either the Anthropic or OpenAI-compatible adapter.
 
-[Self-hosting and BYO API guide →](docs/SELF_HOSTED_DEMO.md)
+[Self-hosting and BYO API guide →](docs/SELF_HOSTED_DEMO.md) · [Claude, OpenAI, and Seedance adapters →](docs/PROVIDER_SETUP.md) · [한국어 연결 가이드 →](docs/PROVIDER_SETUP.ko.md)
 
 ## What the system does
 
